@@ -9,7 +9,7 @@ contract personal_pages {
 
   mapping(address => personal_page) public pages;
 
-  modifier only_owner() { if (msg.sender != contract_owner){ abort_contract(); } } //?
+  modifier only_owner() { if (msg.sender != contract_owner){ return; } } //?
 	
   function set_owner() { contract_owner = msg.sender; }
 
