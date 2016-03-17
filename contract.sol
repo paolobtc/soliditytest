@@ -15,27 +15,27 @@ contract personal_pages {
 
   function create_new_profile(string nickname, string dob, string bio, string twitter_link, string github_link, string linkedin_link) returns(bool result)
  {
-   bool res = false; //maybe add a check to see if a profile already exists by nickname
-   //personal_page _pages = pages[msg.sender]; 
-   pages[msg.sender].nickname = nickname; pages[msg.sender].dob = dob; pages[msg.sender].bio = bio;
-   pages[msg.sender].twitter_link = twitter_link;
-   pages[msg.sender].github_link = github_link;
-   pages[msg.sender].linkedin_link = linkedin_link;
-   res = true;
-   return res;
+   //bool res = false; //maybe add a check to see if a profile already exists by nickname
+   personal_page _pages = pages[msg.sender]; 
+   _pages.nickname = nickname; _pages.dob = dob; _pages.bio = bio;
+   _pages.twitter_link = twitter_link;
+   _pages.github_link = github_link;
+   _pages.linkedin_link = linkedin_link;
+   //bool res = true;
+   return true;
  }
 
  function edit_profile(string nickname, string dob, string bio, string twitter_link, string github_link, string linkedin_link) returns(bool result) 
 {
    if (msg.sender != contract_owner) { abort_contract(); } //only the contract owner can edit a profile
-   bool res = false; //maybe add error checking
-   //personal_page _pages = pages[msg.sender]; 
-   pages[msg.sender].nickname = nickname; pages[msg.sender].dob = dob; pages[msg.sender].bio = bio;
-   pages[msg.sender].twitter_link = twitter_link;
-   pages[msg.sender].github_link = github_link;
-   pages[msg.sender].linkedin_link = linkedin_link;
-   res = true;
-   return res;
+   //bool res = false; //maybe add error checking
+   personal_page _pages = pages[msg.sender]; 
+   _pages.nickname = nickname; _pages.dob = dob; _pages.bio = bio;
+   _pages.twitter_link = twitter_link;
+   _pages.github_link = github_link;
+   _pages.linkedin_link = linkedin_link;
+   //bool res = true;
+   return true;
 }
 
  function get_profile_info() returns(string nickname, string dob, string bio, string twitter_link, string github_link, string linkedin_link) 
